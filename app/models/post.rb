@@ -1,4 +1,4 @@
 class Post < ActiveRecord::Base
   validates :title, presence: true
-  (:password, { :length => { :in => 6..20 } })
+  validates(:content, { :length => { :in => 10..200 } })
 end
