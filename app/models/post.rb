@@ -1,3 +1,4 @@
+require 'pry'
 class Post < ActiveRecord::Base
   validates :title, :presence => true
   validates :content, :length => { :minimum => 250 }
@@ -6,6 +7,7 @@ class Post < ActiveRecord::Base
   validate :clickbait
   
   def clickbait
+    binding.pry
     if !title.nil? && (!title.include?("True Facts")) || (!title.include?("Won't Believe")) || (!title.include?("Top")) || (!title.include?("Secret"))
       return false
     end
