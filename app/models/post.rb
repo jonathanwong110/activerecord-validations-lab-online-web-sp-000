@@ -8,6 +8,7 @@ class Post < ActiveRecord::Base
   def clickbait
     if !title.nil?
       return false
+    end
       if (!title.include?("True Facts")) || (!title.include?("Won't Believe")) || (!title.include?("Top")) || (!title.include?("Secret"))
       return false
     end
