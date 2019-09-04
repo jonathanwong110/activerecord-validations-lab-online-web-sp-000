@@ -7,9 +7,24 @@ class Post < ActiveRecord::Base
   validate :clickbait?
   
   def clickbait
-    if !title.nil? && (!title.include?("True Facts")) || (!title.include?("Won't Believe")) || (!title.include?("Top [0-9]*/i")) || (!title.include?("Secret"))
+    if !title.nil? && (!title.include?(/Won't Believe/i)) || (!title.include?(/Won't Believe/i)) || (!title.include?(/Top [0-9]*/i)) || (!title.include?(/Secret/i))
       return false
     end
   end
 
 end
+
+#validate :is_clickbait?
+#
+#  CLICKBAIT_PATTERNS = [
+#    /Won't Believe/i,
+#    /Secret/i,
+#    /Top [0-9]*/i,
+#    /Guess/i
+#  ]
+#
+#  def is_clickbait?
+#    if CLICKBAIT_PATTERNS.none? { |pat| pat.match title }
+#      errors.add(:title, "must be clickbait")
+#    end
+#  end
